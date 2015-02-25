@@ -13,7 +13,7 @@ class DefaultController extends Controller
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="olexa_default_default")
      * @Template()
      */
     public function defaultAction()
@@ -23,7 +23,47 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/hello/{name}")
+     * @Route("/projekty", name="olexa_default_projekty")
+     * @Template()
+     */
+    public function projektyAction()
+    {
+
+        return array();
+    }
+
+    /**
+     * @Route("/zamestnanci/zahradnici", name="olexa_default_zamestnanci_zahradnici")
+     * @Template()
+     */
+    public function zahradniciAction()
+    {
+
+        return array();
+    }
+
+    /**
+     * @Route("/zamestnanci/uklizecky", name="olexa_default_zamestnanci_uklizecky")
+     * @Template()
+     */
+    public function uklizeckyAction()
+    {
+
+        return array();
+    }
+
+    /**
+     * @Route("/profil", name="olexa_default_profil")
+     * @Template()
+     */
+    public function profilAction()
+    {
+
+        return array();
+    }
+
+    /**
+     * @Route("/hello/{name}", name="olexa_default_hello")
      * @Template()
      */
     public function helloAction($name)

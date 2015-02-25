@@ -1,29 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: petr
- * Date: 21.2.15
- * Time: 17:25
- */
 
-namespace Olexa\TestBundle\Navigation;
-
+namespace Olexa\TestBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
-class Navigation  extends ContainerAware {
-
+class MenuBuilder extends ContainerAware
+{
     public function mainMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav');
 
-        $menu->addChild('Projects', array('route' => 'acme_hello_projects'))
-            ->setAttribute('icon', 'icon-list');
+        $menu->addChild('Projekty', array('route' => 'olexa_default_projekty'))
+            ->setAttribute('icon', 'fa fa-list');
 
-        $menu->addChild('Employees', array('route' => 'acme_hello_employees'))
-            ->setAttribute('icon', 'icon-group');
+        $zamestnanci = $menu->addChild('Zamestnanci', array())
+            ->setAttribute('icon', 'fa fa-group')
+            ->setAttribute('dropdown', true);
+        $zamestnanci->addChild('Uklizecky', array('route' => 'olexa_default_zamestnanci_uklizecky'));
+        $zamestnanci->addChild('Zahradnici', array('route' => 'olexa_default_zamestnanci_zahradnici'));
 
         return $menu;
     }
@@ -31,7 +27,7 @@ class Navigation  extends ContainerAware {
     public function userMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav pull-right');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
 
         /*
         You probably want to show user specific information such as the username here. That's possible! Use any of the below methods to do this.
@@ -42,13 +38,11 @@ class Navigation  extends ContainerAware {
         */
         $menu->addChild('User', array('label' => 'Hi visitor'))
             ->setAttribute('dropdown', true)
-            ->setAttribute('icon', 'icon-user');
+            ->setAttribute('icon', 'fa fa-user');
 
-        $menu['User']->addChild('Edit profile', array('route' => 'acme_hello_profile'))
-            ->setAttribute('icon', 'icon-edit');
+        $menu['User']->addChild('Edit profile', array('route' => 'olexa_default_profil'))
+            ->setAttribute('icon', 'fa fa-edit');
 
         return $menu;
     }
-
 }
-

@@ -1,5 +1,5 @@
 {% extends 'knp_menu.html.twig' %}
-
+ 
 {% block item %}
     {% import "knp_menu.html.twig" as macros %}
     {% if item.displayed %}
@@ -63,7 +63,7 @@
         {%- endif %}
     {% endif %}
 {% endblock %}
-
+ 
 {% block dividerElement %}
     {% if item.level == 1 %}
         <li class="divider-vertical"></li>
@@ -71,7 +71,7 @@
         <li class="divider"></li>
     {% endif %}
 {% endblock %}
-
+ 
 {% block linkElement %}
     <a href="{{ item.uri }}"{{ macros.attributes(item.linkAttributes) }}>
         {% if item.attribute('icon') is not empty  %}
@@ -80,16 +80,16 @@
         {{ block('label') }}
     </a>
 {% endblock %}
-
+ 
 {% block spanElement %}
     <span>{{ macros.attributes(item.labelAttributes) }}>
         {% if item.attribute('icon') is not empty  %}
             <i class="{{ item.attribute('icon') }}"></i>
         {% endif %}
         {{ block('label') }}
-    </span>
+	</span>
 {% endblock %}
-
+ 
 {% block dropdownElement %}
     {%- set classes = item.linkAttribute('class') is not empty ? [item.linkAttribute('class')] : [] %}
     {%- set classes = classes|merge(['dropdown-toggle']) %}
@@ -104,5 +104,5 @@
         <b class="caret"></b>
     </a>
 {% endblock %}
-
+ 
 {% block label %}{{ item.label|trans }}{% endblock %}
